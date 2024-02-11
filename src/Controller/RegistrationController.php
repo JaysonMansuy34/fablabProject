@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\UsersAuthenticator;
+use App\Service\SendMailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,7 +28,8 @@ class RegistrationController extends AbstractController
         UserPasswordHasherInterface $userPasswordHasher,
         UserAuthenticatorInterface $userAuthenticator,
         UsersAuthenticator $authenticator,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        SendMailService $email
     ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -45,6 +47,15 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
+            //On envoie un mail
+            $email->send(
+                'no-reply@test.fr',
+                $user->getUuid(),
+                'Activation de votre compte sur le site fablab',
+                'register',
+                    compact('user')
+            );
+            
 
             return $userAuthenticator->authenticateUser(
                 $user,
