@@ -38,3 +38,4 @@ ONE ETAPE : composer require doctrine/doctrine-migrations-bundle
     - TWO ETAPE : php bin/console make:migration
     - TREE : php bin/console doctrine:migrations:migrate
 
+Pour voir si l'email et comfirmer le compte ouvré et creer un compte https://mailtrap.io/
