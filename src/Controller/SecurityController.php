@@ -21,9 +21,9 @@ class SecurityController extends AbstractController
          *  Condition de redirection si User est déjà connecté au cas ou qu'il accèdes à la page login
          */
         
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_profil');
+        }
 
         // Obtenir le message d'erreur de connexion s'il y en a un
         $error = $authenticationUtils->getLastAuthenticationError();
