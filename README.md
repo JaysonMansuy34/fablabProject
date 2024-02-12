@@ -33,5 +33,15 @@ Open Start Project :
          lance le serveur web local de Symfony pour le développement, permettant l'accès à l'application via un navigateur web.
     }
 
-
+Command Git: 
+    - Create Branch :
+        - git checkout -b Nom_De_La_Branche
+    - Navigate branch : 
+        - git checkout Nom_De_La_Branche
+    - Save branch :
+        - git add .
+        - git commit -m "<Votre message>"
+        - git push origin Nom_De_La_Branche
+    - Update code actualiser :
+        - git pull 
 
