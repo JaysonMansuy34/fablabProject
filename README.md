@@ -33,5 +33,8 @@ Open Start Project :
          lance le serveur web local de Symfony pour le développement, permettant l'accès à l'application via un navigateur web.
     }
 
-
+Créer base de donné : fablab dans PhpMyAdmin
+ONE ETAPE : composer require doctrine/doctrine-migrations-bundle
+    - TWO ETAPE : php bin/console make:migration
+    - TREE : php bin/console doctrine:migrations:migrate
 
