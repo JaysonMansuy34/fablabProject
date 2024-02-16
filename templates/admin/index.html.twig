@@ -1,0 +1,57 @@
+
+
+{% block title %}Tableau de Bord Administrateur{% endblock %}
+
+{# CSS spécifique #}
+{% block stylesheets %}
+    <!-- Insérer ici les liens vers les CSS supplémentaires, par exemple pour Bootstrap ou vos styles personnalisés -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    {# <link href="/chemin/vers/votre/css/personnalise.css" rel="stylesheet"> #}
+{% endblock %}
+
+{# Contenu principal de la page #}
+{% block body %}
+    {% include 'admin/partial/_navBarAdmin.html.twig' %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Section principale -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Dashboard</h1>
+                </div>
+
+                <!-- Contenu du tableau de bord -->
+                <div class="row">
+                    <!-- Cartes d'informations -->
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal">Utilisateurs</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">560 <small class="text-muted">/ actifs</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>200 nouveaux ce mois</li>
+                                    <li>350 actifs quotidiennement</li>
+                                </ul>
+                                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Voir plus</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plus de cartes peuvent être ajoutées ici -->
+                </div>
+
+                <!-- Graphiques ou autres informations -->
+            </main>
+        </div>
+    </div>
+{% endblock %}
+
+{# JavaScripts spécifiques #}
+{% block javascripts %}
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+{% endblock %}
+
+

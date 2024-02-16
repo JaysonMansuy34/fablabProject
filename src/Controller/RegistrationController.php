@@ -75,7 +75,7 @@ class RegistrationController extends AbstractController
             //On envoie un mail
             $email->send(
                 'no-reply@test.fr',
-                $user->getUuid(),
+                $user->getEmail(),
                 'Activation de votre compte sur le site fablab',
                 'register',
                 compact('user', 'token')
@@ -161,7 +161,7 @@ class RegistrationController extends AbstractController
         //On envoie un mail
         $mail->send(
             'no-reply@test.fr',
-            $user->getUuid(),
+            $user->getEmail(),
             'Activation de votre compte sur le site fablab',
             'register',
             compact('user', 'token')

@@ -1,0 +1,35 @@
+/* styles/user/user-edit.css */
+
+/* styles/user/user-edit.css */
+
+.edit-user-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-user-container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.edit-user-container .form-group {
+    margin-bottom: 20px;
+}
+
+.edit-user-container .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.edit-user-container .admin-user {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+

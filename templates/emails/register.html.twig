@@ -1,5 +1,5 @@
 
 <h1>Bonjour activez votre compte !</h1>
-<p>bonjour {{ user.uuid }}</p>
+<p>bonjour {{ user.email }}</p>
 <p>Votre inscription sur le site fablab est à valider en cliquant sur le lien ci-dessous</p>
 <p><a href="{{ absolute_url(path('verify_user', {token: token}))}}">{{ absolute_url(path('verify_user', {token: token}))}}</a></p><p>celien expirera dans 3h</p>

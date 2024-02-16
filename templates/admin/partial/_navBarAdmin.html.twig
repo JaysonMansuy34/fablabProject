@@ -1,0 +1,82 @@
+{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('styles/admin/navBarAdmin.css') }}">
+          <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+	{% endblock %}
+  {% block javascripts %}
+        <script src="{{ asset('javascript/navBarAdmin.js') }}" defer></script>
+        <!-- Encore une fois, assurez-vous que le chemin est correct -->
+    {% endblock %}
+{% block body %}
+<body id="body-pd">
+        <div class="l-navbar" id="navbar">
+            <nav class="nav">
+                <div>
+                    <div class="nav__brand">
+                        <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                        <a href="{{path('admin_')}}" class="nav__logo">FabLab Bézier</a>
+                    </div>
+                    <div class="nav__list">
+                        <a href="{{ path('app_user_index') }}" class="nav__link">
+                            <ion-icon name="home-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Dashboard Users</span>
+                        </a>
+                        <a href="{{ path('machine_') }}" class="nav__link">
+                            <ion-icon name="construct-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Machines</span>
+                        </a>
+                        <a href="#" class="nav__link">
+                            <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Gestion Machines</span>
+                        </a>
+
+                        <div  class="nav__link collapse">
+                            <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Projects</span>
+
+                            <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                            <ul class="collapse__menu">
+                                <a href="#" class="collapse__sublink">Data</a>
+                                <a href="#" class="collapse__sublink">Group</a>
+                                <a href="#" class="collapse__sublink">Members</a>
+                            </ul>
+                        </div>
+
+                        <a href="#" class="nav__link">
+                            <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Analytics</span>
+                        </a>
+                        <div class="nav__link collapse">
+                            <ion-icon name="people-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Team</span>
+
+                            <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                            <ul class="collapse__menu">
+                                <a href="#" class="collapse__sublink">Data</a>
+                                <a href="#" class="collapse__sublink">Group</a>
+                                <a href="#" class="collapse__sublink">Members</a>
+                            </ul>
+                        </div>
+                        <a href="#" class="nav__link">
+                            <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
+                            <span class="nav__name">Settings</span>
+                        </a>
+                        <a href="{{ path('app_profil') }}" class="nav__link">
+                            <ion-icon name="eye-outline" class="nav__icon">></ion-icon>
+                            <span class="nav__name">Profil</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="{{ path('app_logout') }}" class="nav__link">
+                    <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
+                    <span class="nav__name">Déconnexion</span>
+                </a>
+            </nav>
+        </div>
+        <!-- ===== IONICONS ===== -->
+        <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+    </body>
+
+{% endblock %}

@@ -71,7 +71,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             //On va chercher l'utilisateur par son email
-            $user = $userRepository->findOneByuuid($form->get('uuid')->getData());
+            $user = $userRepository->findOneByemail($form->get('email')->getData());
 
             //Verifier si on a un utilisateur
             if ($user) {
@@ -94,7 +94,7 @@ class SecurityController extends AbstractController
                 //Envoi du mail
                 $email->send(
                     'no-reply@hotmail.fr',
-                    $user->getUuid(),
+                    $user->getEmail(),
                     'Réinitilisation de mot de passe',
                     'password_reset',
                     $context

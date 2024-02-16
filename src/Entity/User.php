@@ -4,13 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Query\Expr\Func;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['uuid'], message: 'Il existe déjà un compte avec cette email')]
+#[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cette email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -19,7 +18,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    private ?string $uuid = null;
+    private ?string $email = null;
 
     #[ORM\Column]
     private array $roles = [];
@@ -27,9 +26,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $is_verified = false;
 
-    #[ORM\Column(type: 'string', length: 200)]
-    private $resetToken;
-    
+    #[ORM\Column(type: 'string', length: 200, nullable: true)]
+    private ?string $resetToken;
+
     /**
      * @var string The hashed password
      */
@@ -41,14 +40,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    public function getUuid(): ?string
+    public function getEmail(): ?string
     {
-        return $this->uuid;
+        return $this->email;
     }
 
-    public function setUuid(string $uuid): static
+    public function setEmail(string $email): static
     {
-        $this->uuid = $uuid;
+        $this->email = $email;
 
         return $this;
     }
@@ -60,26 +59,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->uuid;
+        return (string) $this->email;
     }
 
     /**
      * @see UserInterface
      */
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
     public function getRoles(): array
     {
+        // Si vous avez ajusté votre entité pour stocker les rôles comme un tableau sans JSON
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
+        // garantir que chaque utilisateur a au moins le rôle ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): static
-    {
-        $this->roles = $roles;
-
-        return $this;
     }
 
     /**
@@ -102,10 +101,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->is_verified;
     }
 
-    public function setIsVerified(bool $is_verified ): self
+    public function setIsVerified(bool $is_verified): self
     {
         $this->is_verified = $is_verified;
-        
+
         return $this;
     }
 
@@ -117,7 +116,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setResetToken(?string $resetToken): self
     {
         $this->resetToken = $resetToken;
-        
+
         return $this;
     }
     /**
